@@ -1,0 +1,13 @@
+.myGrid {
+  width: 600px;
+  height: 250px;
+}
+.custom-grid-platforms {
+  width: 100%;
+  height: auto;
+}
+
+.indexCreateBtn {
+  margin: 10px;
+  float: right;
+}

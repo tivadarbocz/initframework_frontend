@@ -1,0 +1,28 @@
+<div class="col-md-6 col-md-offset-3">
+    <h2>Login</h2>
+    <form name="form" ng-submit="vm.login()" role="form">
+        <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
+            <label for="username">Username(e-mail)</label>
+            <input type="email" name="username" id="username" class="form-control" ng-model="vm.username" required/>
+            <span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Username is required</span>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" class="form-control" ng-model="vm.password" required/>
+            <span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
+        </div>
+        <div class="form-group" ng-show="vm.captchaShow"
+             ng-class="{ 'has-error': form.captcha.$dirty && form.captcha.$error.required }">
+            <input type="checkbox" ng-model="vm.captcha" ng-checked="!vm.captchaShow" id="captcha"
+                   name="captcha" ng-required="vm.captchaShow">
+            <p>I'm not a robot</p>
+            <span ng-show="form.captcha.$dirty && form.captcha.$error.required"
+                  class="help-block">I do not like robots</span>
+        </div>
+        <div class="form-actions">
+            <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Login</button>
+            <a href="#/register" class="btn btn-link">Register</a>
+            <a href="#/forgot" class="btn btn-link">Forgot password</a>
+        </div>
+    </form>
+</div>
