@@ -5,8 +5,8 @@
         .module('app')
         .factory('AuthenticationService', AuthenticationService);
 
-    AuthenticationService.$inject = ['$http', '$cookieStore', '$rootScope','CodeService'];
-    function AuthenticationService($http, $cookieStore, $rootScope, CodeService) {
+    AuthenticationService.$inject = ['$http', '$cookieStore', '$rootScope'];
+    function AuthenticationService($http, $cookieStore, $rootScope) {
         var service = {};
 
         service.Login = Login;
@@ -16,20 +16,21 @@
         return service;
 
         function Login(username, password, callback) {
-            $http.put('http://localhost:8080/api/login',
-                {
-                    "authorization": CodeService.Base64.encode(JSON.stringify({
-                        email: username,
-                        password: password
-                    }))
-                })
-                .success(function (response) {
+            $http({
+                method: 'POST',
+                url: 'http://localhost:8080/user/login',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                data:{authorization: btoa("name:" + username + ",password:" + password)}
 
+            })
+                .success(function (response) {
                     response.success = true;
                     callback(response);
                 }).error(function () {
-                console.log("Error");
-            });
+                    console.log("Error during authentication");
+                });
         }
 
         function SetCredentials(username, password, token) {
