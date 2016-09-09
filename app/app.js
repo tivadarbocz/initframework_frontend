@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-      .module('app', ['ngRoute', 'ngCookies', 'ui.grid', 'ui.grid.pagination', 'ui.grid.selection', 'ui.grid.resizeColumns', 'ui.bootstrap', 'ngFileUpload', 'ngTouch', 'ngAnimate' /*,'ui.bootstrap','ngAnimate'*/])
+      .module('app', ['ngRoute', 'ngCookies', 'ui.grid', 'ui.grid.pagination', 'ui.grid.selection', 'ui.grid.resizeColumns', 'ui.bootstrap', 'ngFileUpload', 'ngTouch', 'ngAnimate' ,'ui.bootstrap','ngAnimate'])
       .config(config)
       .run(run);
 
