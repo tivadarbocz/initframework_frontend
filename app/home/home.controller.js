@@ -25,14 +25,16 @@
 
         function initController() {
             vm.currentUser = $cookieStore.get("globals").currentUser;
-            //loadCurrentUser();
+            loadCurrentUser();
         }
 
         function loadCurrentUser() {
-            var u = {};
-            u.email = $cookieStore.get("globals").currentUser.email;
-            UserService.GetUserByEmail(u).then(function (res) {
+            //var u = {};
+            //u.email = $cookieStore.get("globals").currentUser.email;
+            var u = $cookieStore.get("globals").currentUser.email;
+            UserService.getUserByUserName(u).then(function (res) {
                 vm.user = res;
+
             });
         }
 

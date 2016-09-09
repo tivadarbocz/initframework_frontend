@@ -11,7 +11,9 @@
         vm.baseUrl = 'http://localhost:8080';
         var service = {};
 
-        service.GetUsersWithPagination = GetUsersWithPagination;
+        service.getUserByUserName = getUserByUserName;
+        service.getAllUser = getAllUser;
+       /*service.GetUsersWithPagination = GetUsersWithPagination;
         service.GetUserById = GetUserById;
         service.DeleteUserById = DeleteUserById;
         service.CreateUser = CreateUser;
@@ -20,11 +22,26 @@
         service.RegisterUser = RegisterUser;
         service.ForgotPassword = ForgotPassword;
         service.GetUserByEmail = GetUserByEmail;
-        service.GetUsersByGroupId = GetUsersByGroupId;
+        service.GetUsersByGroupId = GetUsersByGroupId;*/
 
         return service;
 
-        function GetUsersWithPagination(take, skip) {
+        function getUserByUserName(userName){
+            return $http({
+                method: 'POST',
+                url: vm.baseUrl + '/user/',
+                params: {userName: userName}
+            }).then(handleSuccess, handleError('Error getting user by username'));
+        }
+
+        function getAllUser(){
+            return $http({
+                method: 'GET',
+                url: vm.baseUrl + '/user/',
+            }).then(handleSuccess, handleError('Error getting all user'));
+        }
+
+        /*function GetUsersWithPagination(take, skip) {
             return $http.get('http://localhost:8080/api/users', {
                 params: {
                     take: take,
@@ -72,7 +89,7 @@
 
         function GetUsersByGroupId(id){
             return $http.get(vm.baseUrl + '/api/users/group/'+id).then(handleSuccess, handleError('Error getting user by group id'));
-        }
+        }*/
 
         // private functions
 
