@@ -1,13 +1,72 @@
+
 .myGrid {
-  width: 600px;
+  width: 100%;
   height: 250px;
 }
 .custom-grid-platforms {
   width: 100%;
   height: auto;
 }
+<!---->
+     .ui-grid-vcenter div {
+       background-color: yellow !important;
+       text-align:center;
+       position: relative;
+       top: 50%;
+       -webkit-transform: translateY(-50%);
+       -ms-transform: translateY(-50%);
+       transform: translateY(-50%);
+     }
 
 .indexCreateBtn {
   margin: 10px;
   float: right;
 }
+
+<!-- -->
+.onoffswitch {
+       position: relative; width: 68px;
+       -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+     }
+.onoffswitch-checkbox {
+  display: none;
+}
+.onoffswitch-label {
+  display: block; overflow: hidden; cursor: pointer;
+  border: 2px solid #121112; border-radius: 43px;
+}
+.onoffswitch-inner {
+  display: block; width: 200%; margin-left: -100%;
+  transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+  display: block; float: left; width: 50%; height: 13px; padding: 0; line-height: 13px;
+  font-size: 13px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+  box-sizing: border-box;
+}
+.onoffswitch-inner:before {
+  content: "ON";
+  padding-left: 10px;
+  background-color: #5AC234; color: #FFFFFF;
+}
+.onoffswitch-inner:after {
+  content: "OFF";
+  padding-right: 10px;
+  background-color: #F21616;
+  text-align: right;
+}
+.onoffswitch-switch {
+  display: block; width: 20px; margin: -3.5px;
+  background: #FFFAFB;
+  position: absolute; top: 0; bottom: 0;
+  right: 51px;
+  border: 2px solid #121112; border-radius: 43px;
+  transition: all 0.3s ease-in 0s;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+  margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+  right: 0px;
+}
+

@@ -37,7 +37,7 @@
         function getAllUser(){
             return $http({
                 method: 'GET',
-                url: vm.baseUrl + '/user/',
+                url: vm.baseUrl + '/user/'
             }).then(handleSuccess, handleError('Error getting all user'));
         }
 

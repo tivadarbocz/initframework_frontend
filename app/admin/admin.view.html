@@ -29,5 +29,26 @@
 
     </div><!-- /.container-fluid -->
 </nav>
-<div ui-grid="vm.gridOptions" class="myGrid"></div>
+<!-- UI GRID -->
+<div ui-grid="vm.gridOptions" class="myGrid">
+    <div class="no-data" ng-hide="!vm.loading">
+        <!-- Sand clock -->
+        <div class="clock">
+            <div class="cup top">
+                <div class="sand"></div>
+            </div>
+            <div class="cup">
+                <div class="sand delayed"></div>
+            </div>
+        </div>
+        <div class="msg">
+            <span>Loading Data...</span>
+        </div>
+    </div>
+    <div class="no-data" ng-hide="(!gridOptions.data.length && vm.loadAttempted) || vm.loading">
+        <div class="msg">
+            <span>No Data</span>
+        </div>
+    </div>
+</div>
 <p>&nbsp;</p>

@@ -11,6 +11,7 @@
     AdminController.$inject = ['UserService', '$cookieStore', '$rootScope', '$location', 'FlashService'];
     function AdminController(UserService, $cookieStore, $rootScope, $location, FlashService) {
         var vm = this;
+        vm.loading;
         vm.columnDefs = [
             {
                 field: 'userId'
@@ -43,7 +44,11 @@
                 field: 'createdBy'
             },
             {   field: 'Active',
-                cellTemplate:'<div><p>béla</p></div>'
+                cellClass: 'ui-grid-vcenter',
+                cellTemplate:'<div class="onoffswitch"> <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked> <label class="onoffswitch-label" for="myonoffswitch"> <span class="onoffswitch-inner"></span> <span class="onoffswitch-switch"></span> </label> </div>'
+            },
+            {   field: 'Actions',
+                cellTemplate:'<div><span class="glyphicon glyphicon-ok"></span><span class="glyphicon glyphicon-remove"></span><span class="glyphicon glyphicon-plus"></span><span class="glyphicon glyphicon-minus"></span><span class="glyphicon glyphicon-envelope"></span></div>'
             }
         ];
         vm.gridOptions = {
@@ -93,7 +98,8 @@
 
         function initController() {
             vm.currentUser = $cookieStore.get("globals").currentUser;
-            loadCurrentUser()
+            vm.loading = true;
+            loadCurrentUser();
             getAllUser();
         }
         function loadCurrentUser() {
@@ -110,7 +116,12 @@
                 vm.users = res;
                 vm.gridOptions.data = res;
                 console.log(res);
-            });
+
+            }).
+                finally(function () {
+                    vm.loading = false;
+                    vm.loadAttempted = true;
+                });
         }
 
 
